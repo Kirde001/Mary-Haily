@@ -2,7 +2,7 @@ import { Component, ViewChild, DestroyRef, OnInit } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { IHero } from '../../interfaces/interface';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { AppService } from '../service/app-service.service';
+import { AppService } from '../../service/app-service.service';
 
 @Component({
   selector: 'app-table',
@@ -37,8 +37,8 @@ export class TableComponent implements OnInit {
   public ngOnInit(): void {
     this._appService.name$
       .pipe(takeUntilDestroyed(this._destroyRef))
-      .subscribe(() => {
-        this.hero = this._appService.bb;
+      .subscribe((heroes) => {
+        this.hero = heroes;
         if (this.table) {
           this.table.renderRows();
         }
@@ -54,7 +54,7 @@ export class TableComponent implements OnInit {
    * @param {IHero} element - массив данных героев, который нужно удалить
    */
   public removeTab(element: IHero): void {
-    this._appService.removeByIndex(element);
+    this._appService.mashaToStolovaya(element);
     if (this.table) {
       this.table.renderRows();
     }

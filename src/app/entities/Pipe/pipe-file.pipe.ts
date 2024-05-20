@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { IHero } from '../interfaces/interface';
 
 @Pipe({
   name: 'iconUrl',
@@ -12,7 +13,7 @@ export class PipeFilePipe implements PipeTransform {
    * @param {any} value - объект со значениями критериев фильтрации и сортировки
    * @returns возвращает отфильтрованный и/или отсортированный массив героев
    */
-  public transform(users: any[], value: any) {
+  public transform(users: any[] | null[], value: any) {
 
     if (value.nameHero) {
       users = users.filter((user) => {

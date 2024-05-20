@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Forms } from './form-form-builder.service';
 import { FormGroup } from '@angular/forms';
-import { AppService } from '../service/app-service.service';
+import { AppService } from '../../service/app-service.service';
 import { IHero } from '../../interfaces/interface';
 import { IAbility } from '../../interfaces/interfaceAbility';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-title',
@@ -12,24 +13,27 @@ import { IAbility } from '../../interfaces/interfaceAbility';
 })
 export class TitleComponent implements OnInit {
 
+  public myTitleForm: FormGroup = this._form.profileForm();
+  public abilityForm: FormGroup = this._form.abilityNew();
+  public dataHero: Observable<IHero[]>;
+  public search: FormGroup = this._form.searchHero();
+  
+  public hero: IHero[] = [{ nameHero: '', power: 0, ability: [''], level: 0 }];
+
   constructor(
     private readonly _form: Forms,
     private readonly _appService: AppService
   ) {
+    this.dataHero = this._appService.name$
   }
 
-  public myTitleForm: FormGroup = this._form.profileForm();
-  public abilityForm: FormGroup = this._form.abilityNew();
-  public dataHero = this._appService.bb;
-  public search: FormGroup = this._form.searchHero();
 
-  public hero: IHero[] = [{ nameHero: '', power: 0, ability: [''], level: 0 }];
 
   /**
    * Присваивает значение свойству hero из appService
    */
+
   public ngOnInit(): void {
-    this.hero = this._appService.bb;
   }
 
   /**
@@ -40,7 +44,7 @@ export class TitleComponent implements OnInit {
    */
   public onOkClick(): void {
     const res = this.myTitleForm.value;
-    this._appService.setName(res);
+    this._appService.addMary(res);
     this.myTitleForm.reset(); 
   }
 
@@ -52,7 +56,7 @@ export class TitleComponent implements OnInit {
    * @param {IHero} element - массив героя, который нужно удалить 
    */
   public removeTab(element: IHero): void {
-    this._appService.removeByIndex(element); 
+    this._appService.mashaToStolovaya(element); 
   }
 
   /**
