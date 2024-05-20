@@ -93,21 +93,21 @@
                     </mat-label>
                     <mat-form-field class="may2">
                         <mat-label for="quantity">от</mat-label>
-                        <input matInput 
+                        <input [min]="1"
+                               [max]="this.search.value.levelFinish-1"
+                               matInput 
                                formControlName="levelStart"
                                type="number" 
-                               name="quantity" 
-                               min="1" 
-                               max="10">
+                               name="quantity">
                     </mat-form-field>
                     <mat-form-field class="may2">
                         <mat-label for="quantity">до</mat-label>
-                        <input matInput 
+                        <input [min]="this.search.value.levelStart+1"
+                               [max]="10"
+                               matInput 
                                formControlName="levelFinish"
                                type="number" 
-                               name="quantity" 
-                               min="1" 
-                               max="10">
+                               name="quantity">
                     </mat-form-field>
                 </a>
 
