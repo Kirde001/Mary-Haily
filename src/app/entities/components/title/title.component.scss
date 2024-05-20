@@ -1,0 +1,78 @@
+:host {
+  button {
+    display: table-cell;
+    justify-content: center;
+    align-items: center;
+    width: auto + 50px;
+    height: 50px;
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 0 1px #4adcd08b;
+
+    &:hover {
+      background-color: #4adcd08b;
+      color: black;
+    }
+  }
+
+  .container {
+    display: flex;
+  }
+
+  .newHero {
+    flex: 0;
+    margin-left: 50px;
+  }
+
+  .hero {
+    flex: 1;
+    min-width: 0;
+    padding: 0 10px;
+    margin-right: 50px;
+  }
+
+  .block2,
+  .block4 {
+    border: 1px solid #4adcd08b;
+  }
+
+  .block1 {
+    margin-bottom: 10px;
+    border: 1px solid #4adcd08b;
+  }
+
+  .may {
+    display: block;
+    margin-top: 1px;
+    transform: scale(0.9);
+  }
+
+  .may2 {
+    transform: scale(0.9);
+  }
+
+  .block3 {
+    align-items: stretch;
+    display: flex;
+    justify-content: initial;
+    border: 1px solid #4adcd08b;
+  }
+
+  mat-label {
+    margin-left: 10px;
+  }
+
+  .search {
+    margin: 40px;
+  }
+
+  .nameSearch {
+    margin-left: 50px;
+    margin-right: 250px;
+  }
+
+  .levelSearch {
+    margin-left: 50px;
+    margin-right: 120px;
+  }
+}

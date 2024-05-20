@@ -1,0 +1,174 @@
+<div class="container">
+    <div class="newHero">
+        <div class="block1">
+            <form [formGroup]="myTitleForm">
+                <div class="formField">
+                    <mat-label for='nameHero'>
+                        Герой
+                    </mat-label>
+                    <mat-form-field class="may">
+                        <input matInput 
+                               formControlName="nameHero" 
+                               required />
+                    </mat-form-field>
+                </div>
+
+                <div class="formField">
+                    <mat-label for='power'>
+                        Сила
+                    </mat-label>
+                    <mat-form-field class="may">
+                        <input matInput 
+                               formControlName="power" 
+                               type="number" 
+                               min="0" 
+                               max="10" 
+                               required />
+                    </mat-form-field>
+                </div>
+
+                <div class="formField">
+                    <mat-label for='ability'>
+                        Способности
+                    </mat-label>
+                    <mat-form-field class="may">
+                        <mat-select formControlName="ability" 
+                                    required 
+                                    multiple>
+                            <mat-option *ngFor="let part of abilitys" 
+                                        [value]="part.name">
+                                {{part.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="formField">
+                    <mat-label for='level'>
+                        Уровень
+                    </mat-label>
+                    <mat-form-field class="may">
+                        <input matInput 
+                               formControlName="level" 
+                               type="number" 
+                               min="0" 
+                               max="10" 
+                               required />
+                    </mat-form-field>
+                </div>
+            </form>
+            <div class="formField">
+                <button mat-button
+                        [disabled]="!myTitleForm.valid || myTitleForm.get('position')?.invalid || myTitleForm.get('symbol')?.invalid"
+                        (click)="onOkClick()">Добавить</button>
+            </div>
+        </div>
+
+        <div class="block2">
+            <form [formGroup]="abilityForm">
+                <div class="formField">
+                    <mat-label for='ability'>
+                        Добавить суперспособность
+                    </mat-label>
+                    <mat-form-field class="may">
+                        <input matInput 
+                               formControlName="name" 
+                               required />
+                    </mat-form-field>
+                </div>
+                <div>
+                    <button mat-button 
+                            (click)="setPart()">Добавить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="block3">
+            <form [formGroup]="search">
+                <a class="levelSearch">
+                    <mat-label for='level'>
+                        Уровень героя:
+                    </mat-label>
+                    <mat-form-field class="may2">
+                        <mat-label for="quantity">от</mat-label>
+                        <input matInput 
+                               formControlName="levelStart"
+                               type="number" 
+                               name="quantity" 
+                               min="1" 
+                               max="10">
+                    </mat-form-field>
+                    <mat-form-field class="may2">
+                        <mat-label for="quantity">до</mat-label>
+                        <input matInput 
+                               formControlName="levelFinish"
+                               type="number" 
+                               name="quantity" 
+                               min="1" 
+                               max="10">
+                    </mat-form-field>
+                </a>
+
+                <a class="abilitySearch">
+                    <mat-label for='ability'>
+                        Способности:
+                    </mat-label>
+                    <mat-form-field class="may2">
+                        <mat-select multiple 
+                                    formControlName="ability">
+                            <mat-option *ngFor="let ability of abilitys"
+                                        [value]="ability.name">{{ability.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </a>
+                <br>
+                <a class="nameSearch">
+                    <mat-label for='nameHero'>
+                        Поиск по имени:
+                    </mat-label>
+                    <mat-form-field class="may2">
+                        <input matInput 
+                               formControlName="byName"
+                               type="text">
+                    </mat-form-field>
+                </a>
+
+                <a class="levelS">
+                    <mat-label for='level'>
+                        Сортировка по уровню:
+                    </mat-label>
+                    <mat-form-field class="may2">
+                        <mat-select formControlName="sortLevel">
+                            <mat-option value="1">По возрастанию</mat-option>
+                            <mat-option value="2">По убыванию</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </a>
+            </form>
+        </div>
+
+        <div class="block4">
+            <mat-expansion-panel *ngFor="let res of dataHero | iconUrl:search.value">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ res.nameHero }}
+                    </mat-panel-title>
+                    <button mat-fab 
+                            aria-label="Delete" 
+                            (click)="removeTab(res)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-expansion-panel-header>
+                <div class="panelContent">
+                    <p>Герой: {{ res.nameHero }}</p>
+                    <p>Сила: {{ res.power }}</p>
+                    <p>Способности: {{ res.ability }}</p>
+                    <p>Уровень: {{ res.level }}</p>
+                </div>
+
+            </mat-expansion-panel>
+        </div>
+    </div>
+</div>

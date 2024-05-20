@@ -1,0 +1,22 @@
+:host {
+    button {
+        display: inline-block;
+        width: 46%;
+        text-align: center;
+        border: 2px solid #4adcd08b;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav {
+        text-align: center;
+    }
+}

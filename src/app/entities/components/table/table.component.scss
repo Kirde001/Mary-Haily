@@ -1,0 +1,49 @@
+:host {
+  table {
+    background-color: white;
+    color: black;
+    border: 2px solid #4adcd08b;
+    border-collapse: collapse;
+    width: 100%;
+
+    th,
+    td {
+      border: 1px solid #4adcd08b;
+      padding: 8px;
+      color: black;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      color: black;
+    }
+  }
+
+  mat-toolbar {
+    padding: 10px;
+    background-color: #4adcd08b;
+    color: black;
+    height: auto;
+
+    .toolbarTitle {
+      flex-grow: 1;
+      text-align: center;
+    }
+  }
+
+  button {
+    display: table-cell;
+    justify-content: center;
+    align-items: center;
+    width: auto + 50px;
+    height: 50px;
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 0 1px #4adcd08b;    
+
+    &:hover {
+      background-color: #4adcd08b;
+      color: black;
+    }
+  }
+}

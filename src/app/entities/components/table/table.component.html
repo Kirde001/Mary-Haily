@@ -1,0 +1,52 @@
+<table mat-table 
+       [dataSource]="hero" 
+       class="mat-elevation-z8 demo-table">
+
+  <ng-container matColumnDef="nameHero">
+    <th mat-header-cell 
+        *matHeaderCellDef>Герой</th>
+    <td mat-cell 
+        *matCellDef="let element">{{ element.nameHero }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="power">
+    <th mat-header-cell 
+        *matHeaderCellDef>Сила</th>
+    <td mat-cell 
+        *matCellDef="let element">{{ element.power }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="ability">
+    <th mat-header-cell 
+        *matHeaderCellDef>Способности</th>
+    <td mat-cell 
+        *matCellDef="let element">{{ element.ability }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="level">
+    <th mat-header-cell 
+        *matHeaderCellDef>Уровень</th>
+    <td mat-cell 
+        *matCellDef="let element">{{ element.level }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell 
+        *matHeaderCellDef></th>
+    <td mat-cell 
+        *matCellDef="let element">
+      <button mat-icon-button 
+              (click)="removeTab(element)"
+              color="warn" >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row 
+      *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row 
+      *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<br>
+<br>
