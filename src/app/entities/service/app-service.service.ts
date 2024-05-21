@@ -11,8 +11,6 @@ export class AppService {
   private _name$$: BehaviorSubject<IHero[]> = new BehaviorSubject<IHero[]>(BB);
   public name$: Observable<IHero[]> = this._name$$.asObservable();
 
-
-
   /**
    * Добавляет в массив bb поступающих массив данных героя
    * 

@@ -10,12 +10,8 @@ import { AppService } from '../../service/app-service.service';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  constructor(
-    private readonly _appService: AppService,
-    private readonly _destroyRef: DestroyRef
-  ) {
-  }
 
+  @ViewChild(MatTable) table!: MatTable<IHero>;
   displayedColumns: string[] = [
     'nameHero',
     'power',
@@ -23,10 +19,16 @@ export class TableComponent implements OnInit {
     'level',
     'delete',
   ];
-
   public hero: IHero[] = [{ nameHero: '', power: 0, ability: [''], level: 0 }];
 
-  @ViewChild(MatTable) table!: MatTable<IHero>;
+
+  constructor(
+    private readonly _appService: AppService,
+    private readonly _destroyRef: DestroyRef
+  ) {
+  }
+
+
 
   /**
    * Подписывается на Observable name$ из appService и 

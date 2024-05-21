@@ -13,14 +13,14 @@ export class PipeFilePipe implements PipeTransform {
    * @param {any} value - объект со значениями критериев фильтрации и сортировки
    * @returns возвращает отфильтрованный и/или отсортированный массив героев
    */
-  public transform(users: any[] | null[], value: any) {
+  public transform(users: any[], value: any) {
 
-    if (value.nameHero) {
+    if (value.byName) {
       users = users.filter((user) => {
         if (
           user.nameHero
-            .toLocaleLowerCase()
-            .includes(value.nameHero.toLocaleLowerCase())
+            .toLowerCase()
+            .includes(value.byName.toLowerCase())
         ) {
           return user;
         }

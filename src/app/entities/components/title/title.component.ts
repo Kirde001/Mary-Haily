@@ -15,25 +15,27 @@ export class TitleComponent implements OnInit {
 
   public myTitleForm: FormGroup = this._form.profileForm();
   public abilityForm: FormGroup = this._form.abilityNew();
-  public dataHero: Observable<IHero[]>;
+  public dataHero!: Observable<IHero[]>;
   public search: FormGroup = this._form.searchHero();
   
   public hero: IHero[] = [{ nameHero: '', power: 0, ability: [''], level: 0 }];
+  public abilitys: IAbility[] = [
+    { name: 'Полет' },
+    { name: 'Магия' },
+    { name: 'Сила' },
+  ];
 
   constructor(
     private readonly _form: Forms,
     private readonly _appService: AppService
   ) {
-    this.dataHero = this._appService.name$
   }
-
-
 
   /**
    * Присваивает значение свойству hero из appService
    */
-
   public ngOnInit(): void {
+    this.dataHero = this._appService.name$
   }
 
   /**
@@ -70,9 +72,4 @@ export class TitleComponent implements OnInit {
     this.abilityForm.reset();
   }
 
-  public abilitys: IAbility[] = [
-    { name: 'Полет' },
-    { name: 'Магия' },
-    { name: 'Сила' },
-  ];
 }

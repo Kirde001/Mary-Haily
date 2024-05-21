@@ -149,7 +149,8 @@
             </form>
         </div>
 
-        <div class="block4" *ngIf="dataHero| async as heroes">
+        <div *ngIf="dataHero| async as heroes"
+             class="block4">
             <mat-expansion-panel *ngFor="let res of heroes | iconUrl:search.value">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
